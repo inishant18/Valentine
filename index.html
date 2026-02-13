@@ -5,48 +5,16 @@
 <title>Our Story ❤️</title>
 
 <style>
-
 body {
     margin: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: Arial, sans-serif;
     background: black;
     color: white;
     overflow-x: hidden;
-    transition: background 1s ease;
+    text-align: center;
 }
 
-/* Soft romantic glow background */
-body::before {
-    content: "";
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at top, rgba(255,77,109,0.2), transparent 60%);
-    z-index: -1;
-}
-
-/* Stars */
-.stars {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
-}
-
-.stars span {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: white;
-    animation: twinkle 4s infinite alternate;
-}
-
-@keyframes twinkle {
-    from { opacity: 0.2; }
-    to { opacity: 1; }
-}
-
-/* Intro */
+/* Intro Page */
 #intro {
     position: fixed;
     width: 100%;
@@ -56,97 +24,68 @@ body::before {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    z-index: 999;
+    z-index: 1000;
     transition: opacity 1s ease;
 }
 
 #enterBtn {
-    margin-top: 30px;
-    padding: 12px 30px;
+    padding: 15px 35px;
     border-radius: 30px;
     border: none;
     background: #ff4d6d;
     color: white;
+    font-size: 18px;
     cursor: pointer;
 }
 
-/* Main */
-.container {
-    max-width: 850px;
+/* Sections */
+.section {
+    max-width: 900px;
     margin: auto;
-    padding: 60px 20px 120px 20px;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 1.5s ease;
+    padding: 80px 20px;
+    display: none;
 }
 
-.glow {
-    font-size: 38px;
-    color: #ff8fa3;
-    text-shadow: 0 0 10px #ff4d6d,
-                 0 0 20px #ff4d6d,
-                 0 0 40px #ff4d6d;
-}
-
-#counter {
-    margin-top: 15px;
+/* Text Message */
+.message {
     font-size: 18px;
-    color: #ffb6b6;
-}
-
-.love-letter {
-    background: rgba(255,255,255,0.06);
-    padding: 30px;
-    border-radius: 20px;
-    margin-top: 30px;
     line-height: 1.8;
+    white-space: pre-line;
 }
 
 /* Carousel */
 .carousel {
-    margin-top: 50px;
     overflow: hidden;
-    border-radius: 20px;
-    background: black;
+    border-radius: 15px;
+    margin-top: 40px;
 }
 
 .slides {
     display: flex;
-    transition: transform 0.8s ease;
+    transition: transform 0.7s ease;
 }
 
 .slides img {
     width: 100%;
-    height: 520px;
-    object-fit: contain; /* No cropping */
+    height: 600px;
+    object-fit: contain;   /* No cropping */
     background: black;
     flex-shrink: 0;
-    animation: kenburns 8s ease-in-out infinite alternate;
-}
-
-@keyframes kenburns {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.05); }
 }
 
 /* Buttons */
 button {
-    padding: 14px 32px;
+    padding: 14px 30px;
     font-size: 18px;
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    margin: 20px;
+    margin: 15px;
 }
 
 #yes {
     background: #ff4d6d;
     color: white;
-    transition: 0.3s;
-}
-
-#yes:hover {
-    transform: scale(1.1);
 }
 
 #no {
@@ -160,70 +99,68 @@ button {
     position: fixed;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, #ff4d6d, black);
+    background: black;
     display: none;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    z-index: 1000;
-    text-align: center;
+    z-index: 2000;
     opacity: 0;
     transition: opacity 1.5s ease;
 }
 
-#celebration h1 {
-    font-size: 50px;
-    animation: pop 1s ease forwards;
-}
-
-@keyframes pop {
-    from { transform: scale(0); }
-    to { transform: scale(1); }
-}
-
-/* Rose Petals */
+/* Petals */
 .petal {
     position: fixed;
     top: -50px;
-    width: 25px;
-    height: 25px;
-    background: radial-gradient(circle at 30% 30%, #ff6b81, #c9184a);
-    border-radius: 50% 50% 50% 0;
-    transform: rotate(45deg);
-    opacity: 0.9;
+    width: 18px;
+    height: 18px;
+    background: red;
+    border-radius: 50%;
     animation: fall linear forwards;
-    pointer-events: none;
-    z-index: 2000;
 }
 
 @keyframes fall {
-    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    to {
+        transform: translateY(110vh);
+        opacity: 0;
+    }
 }
-
 </style>
 </head>
 
 <body>
 
-<div class="stars" id="stars"></div>
-
-<!-- Intro -->
+<!-- Intro Page -->
 <div id="intro">
-    <h1>From 10 October 2025… 💖</h1>
-    <button id="enterBtn" onclick="enterSite()">Enter Our Story</button>
+    <h1>Our Story ❤️</h1>
+    <button id="enterBtn" onclick="startStory()">Enter Our Story</button>
 </div>
 
-<div class="container" id="mainContent">
+<!-- Full Message Section -->
+<div class="section" id="textSection">
 
-<h1 class="glow">Our Story ❤️</h1>
-<div id="counter"></div>
+<div class="message">
+I didn’t know someone could quietly become such a big part of my world, but you did — with your smiles, your little taunts, your soft heart, and the way you care without even trying.
 
-<div class="love-letter">
-I didn’t know someone could quietly become such a big part of my world, but you did.<br><br>
-Talking to you feels like home.<br><br>
-My effort. My loyalty. My heart — always yours. 💖
+Talking to you, laughing with you, even arguing with you, it all feels like home. (And I’ll never be louder with you, you know that.)
+There’s a calmness in you that I hold close, and a spark in you that I never want to lose.
+
+Thank you for choosing me, for staying, and for believing in us.
+Every day with you makes me want to try harder, love deeper, and be better, not because you ask for it, but because you deserve it. And I love doing things for you without thinking twice.
+
+I may not be perfect, but I promise you this — my effort, my loyalty, and my heart will always be yours.
+
+Happy Valentines Day, cuddle bug.
+Here’s to many more days, months, and memories with you.
 </div>
+
+<button onclick="showImages()">Continue ❤️</button>
+
+</div>
+
+<!-- Images Section -->
+<div class="section" id="imageSection">
 
 <div class="carousel">
     <div class="slides" id="slides">
@@ -236,50 +173,48 @@ My effort. My loyalty. My heart — always yours. 💖
     </div>
 </div>
 
-<h2 style="margin-top:60px;">Will you be my Valentine? 💖</h2>
+<button onclick="showProposal()">Continue 💖</button>
 
-<button id="yes" onclick="sayYes()">Yes 💕</button>
-<button id="no">No 🙈</button>
+</div>
+
+<!-- Proposal Section -->
+<div class="section" id="proposalSection">
+    <h2>Will you be my Valentine? 💖</h2>
+    <button id="yes" onclick="sayYes()">Yes 💕</button>
+    <button id="no">No 🙈</button>
+</div>
+
+<!-- Celebration -->
+<div id="celebration">
+    <h1>💍 Officially My Valentine 💖</h1>
+</div>
 
 <audio id="bgMusic" loop>
   <source src="love.mp3" type="audio/mpeg">
 </audio>
 
-</div>
-
-<div id="celebration">
-    <h1>💍 Officially My Valentine 💖</h1>
-</div>
-
 <script>
 
-/* Stars */
-for (let i = 0; i < 120; i++) {
-    const star = document.createElement("span");
-    star.style.top = Math.random() * 100 + "%";
-    star.style.left = Math.random() * 100 + "%";
-    document.getElementById("stars").appendChild(star);
-}
-
 /* Intro Transition */
-function enterSite() {
+function startStory() {
     document.getElementById("intro").style.opacity = "0";
     setTimeout(() => {
         document.getElementById("intro").style.display = "none";
-        document.getElementById("mainContent").style.opacity = "1";
+        document.getElementById("textSection").style.display = "block";
     }, 1000);
 }
 
-/* Day Counter */
-const startDate = new Date("October 10, 2025 00:00:00").getTime();
+/* Show Images */
+function showImages() {
+    document.getElementById("textSection").style.display = "none";
+    document.getElementById("imageSection").style.display = "block";
+}
 
-setInterval(function() {
-    const now = new Date().getTime();
-    const diff = now - startDate;
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    document.getElementById("counter").innerHTML =
-        "It's been " + days + " days since we met ❤️";
-}, 1000);
+/* Show Proposal */
+function showProposal() {
+    document.getElementById("imageSection").style.display = "none";
+    document.getElementById("proposalSection").style.display = "block";
+}
 
 /* Carousel */
 let currentIndex = 0;
@@ -289,16 +224,16 @@ const totalSlides = slides.children.length;
 setInterval(() => {
     currentIndex = (currentIndex + 1) % totalSlides;
     slides.style.transform = `translateX(-${currentIndex * 100}%)`;
-}, 5000);
+}, 4000);
 
-/* No Button Movement */
+/* No Button Move */
 const noBtn = document.getElementById("no");
 noBtn.addEventListener("mouseover", function() {
     noBtn.style.left = Math.random() * window.innerWidth + "px";
     noBtn.style.top = Math.random() * window.innerHeight + "px";
 });
 
-/* YES Click */
+/* Yes Click */
 function sayYes() {
     document.getElementById("bgMusic").play();
     document.getElementById("celebration").style.display = "flex";
@@ -308,23 +243,16 @@ function sayYes() {
     startPetals();
 }
 
-/* Rose Petals */
+/* Petals */
 function startPetals() {
     setInterval(() => {
         const petal = document.createElement("div");
         petal.className = "petal";
         petal.style.left = Math.random() * 100 + "vw";
-        petal.style.animationDuration = (3 + Math.random() * 4) + "s";
-        petal.style.width = (15 + Math.random() * 20) + "px";
-        petal.style.height = petal.style.width;
-
+        petal.style.animationDuration = (3 + Math.random() * 3) + "s";
         document.body.appendChild(petal);
-
-        setTimeout(() => {
-            petal.remove();
-        }, 7000);
-
-    }, 200);
+        setTimeout(() => petal.remove(), 6000);
+    }, 300);
 }
 
 </script>
