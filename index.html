@@ -31,14 +31,6 @@ body {
     pointer-events: auto;
 }
 
-/* Intro */
-#intro {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
 /* Buttons */
 button {
     padding: 14px 30px;
@@ -51,7 +43,7 @@ button {
     margin-top: 30px;
 }
 
-/* Message */
+/* Love Letter */
 .love-letter {
     max-width: 800px;
     margin: auto;
@@ -62,33 +54,29 @@ button {
 
 /* Counter */
 #counter {
-    margin-top: 20px;
+    margin-bottom: 20px;
     color: #ff8fa3;
     font-size: 18px;
 }
 
-/* Images */
+/* Carousel */
 .carousel {
     max-width: 900px;
     margin: 40px auto;
+    overflow: hidden;
 }
 
-.carousel img {
+.slides {
+    display: flex;
+    transition: transform 0.8s ease;
+}
+
+.slides img {
     width: 100%;
     height: auto;
     max-height: 85vh;
-    object-fit: contain; /* No cropping */
-    display: block;
-    margin: 0 auto 30px auto;
-}
-
-/* Celebration */
-#celebration {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background: black;
+    object-fit: contain;
+    flex-shrink: 0;
 }
 
 /* Heartbeat */
@@ -102,6 +90,14 @@ button {
     50% { transform: scale(1); }
     75% { transform: scale(1.08); }
     100% { transform: scale(1); }
+}
+
+/* Celebration */
+#celebration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 /* Petals */
@@ -145,12 +141,14 @@ button {
 <!-- IMAGES -->
 <div id="imageSection" class="section">
     <div class="carousel">
-        <img src="img1.jpg">
-        <img src="img2.jpg">
-        <img src="img3.jpg">
-        <img src="img4.jpg">
-        <img src="img5.jpg">
-        <img src="img6.jpg">
+        <div class="slides" id="slides">
+            <img src="img1.jpg">
+            <img src="img2.jpg">
+            <img src="img3.jpg">
+            <img src="img4.jpg">
+            <img src="img5.jpg">
+            <img src="img6.jpg">
+        </div>
     </div>
     <button onclick="goToProposal()">Continue 💖</button>
 </div>
@@ -159,6 +157,7 @@ button {
 <div id="proposalSection" class="section">
     <h2>Will you be my Valentine? 💖</h2>
     <button onclick="sayYes()">Yes 💕</button>
+    <button id="noBtn">No 🙈</button>
 </div>
 
 <!-- CELEBRATION -->
@@ -172,7 +171,7 @@ button {
 
 <script>
 
-/* Smooth Section Transitions */
+/* Section Transition */
 function showSection(id) {
     document.querySelectorAll('.section').forEach(sec => {
         sec.classList.remove('active');
@@ -196,7 +195,7 @@ function goToProposal() {
     showSection('proposalSection');
 }
 
-/* TYPEWRITER */
+/* Typewriter */
 const fullText = `I didn’t know someone could quietly become such a big part of my world, but you did — with your smiles, your little taunts, your soft heart, and the way you care without even trying.
 
 Talking to you, laughing with you, even arguing with you, it all feels like home.
@@ -217,7 +216,7 @@ function startTyping() {
     }
 }
 
-/* COUNTER */
+/* Counter */
 const startDate = new Date("October 10, 2025 00:00:00").getTime();
 
 setInterval(function() {
@@ -232,7 +231,31 @@ setInterval(function() {
         `It's been ${days} days, ${hours} hours, ${minutes} minutes since we met ❤️`;
 }, 1000);
 
-/* FINAL CELEBRATION */
+/* Image Slider */
+let currentIndex = 0;
+const slides = document.getElementById("slides");
+
+setInterval(() => {
+    if (slides) {
+        currentIndex++;
+        if (currentIndex >= slides.children.length) {
+            currentIndex = 0;
+        }
+        slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+}, 4000);
+
+/* Floating No Button */
+const noBtn = document.getElementById("noBtn");
+
+noBtn.style.position = "absolute";
+
+noBtn.addEventListener("mouseover", function () {
+    noBtn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+    noBtn.style.top = Math.random() * (window.innerHeight - 50) + "px";
+});
+
+/* Final Celebration */
 function sayYes() {
     showSection('celebration');
 
@@ -251,7 +274,7 @@ function sayYes() {
     startPetals();
 }
 
-/* PETALS */
+/* Petals */
 function startPetals() {
     setInterval(() => {
         const petal = document.createElement("div");
