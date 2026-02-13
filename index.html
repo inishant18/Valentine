@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For Dakshita ❤️</title>
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+        text-align: center;
+        color: white;
+    }
+
+    h1 {
+        font-size: 40px;
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    button {
+        padding: 15px 30px;
+        font-size: 18px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        margin: 15px;
+        transition: 0.3s;
+        position: relative;
+    }
+
+    #yes {
+        background: #ff4b5c;
+        color: white;
+    }
+
+    #yes:hover {
+        transform: scale(1.1);
+    }
+
+    #no {
+        background: #333;
+        color: white;
+        position: absolute;
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+
+    .heart {
+        position: absolute;
+        color: rgba(255, 0, 100, 0.7);
+        font-size: 20px;
+        animation: float 6s linear infinite;
+    }
+
+    @keyframes float {
+        from {
+            transform: translateY(100vh) scale(1);
+            opacity: 1;
+        }
+        to {
+            transform: translateY(-10vh) scale(1.5);
+            opacity: 0;
+        }
+    }
+
+    #message {
+        font-size: 30px;
+        margin-top: 20px;
+        display: none;
+        animation: pop 1s ease forwards;
+    }
+
+    @keyframes pop {
+        0% {transform: scale(0);}
+        100% {transform: scale(1);}
+    }
+
+</style>
+</head>
+<body>
+
+<h1>Dakshita, will you be my Valentine? 💖</h1>
+
+<button id="yes" onclick="sayYes()">Yes 💕</button>
+<button id="no">No 😈</button>
+
+<div id="message">You just made me the happiest person alive ❤️🥹</div>
+
+<audio autoplay loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    const noBtn = document.getElementById("no");
+
+    noBtn.addEventListener("mouseover", function() {
+        noBtn.style.position = "absolute";
+        noBtn.style.left = Math.random() * window.innerWidth + "px";
+        noBtn.style.top = Math.random() * window.innerHeight + "px";
+    });
+
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "💖";
+        heart.style.left = Math.random() * window.innerWidth + "px";
+        heart.style.fontSize = Math.random() * 20 + 15 + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+    }
+
+    setInterval(createHeart, 300);
+
+    function sayYes() {
+        document.getElementById("message").style.display = "block";
+        document.querySelector("h1").style.display = "none";
+        document.getElementById("yes").style.display = "none";
+        document.getElementById("no").style.display = "none";
+        document.body.style.background = "linear-gradient(135deg, #ff758c, #ff7eb3)";
+    }
+</script>
+
+</body>
+</html>
