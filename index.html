@@ -1,53 +1,134 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Our First Date ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story ❤️</title>
 
 <style>
+
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to bottom, #1a1a1a, #3a2c2c);
+    background: black;
     color: white;
-    text-align: center;
     overflow-x: hidden;
 }
 
+/* Subtle Romantic Background Glow */
+body::before {
+    content: "";
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top, rgba(255,77,109,0.15), transparent 60%);
+    z-index: -1;
+}
+
+/* Star Background */
+.stars {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+.stars span {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    animation: twinkle 4s infinite alternate;
+}
+
+@keyframes twinkle {
+    from { opacity: 0.2; }
+    to { opacity: 1; }
+}
+
+/* Main Container */
 .container {
-    padding: 40px 20px;
+    max-width: 850px;
+    margin: auto;
+    padding: 60px 20px 120px 20px;
+    text-align: center;
 }
 
-h1 {
-    font-size: 32px;
-    margin-bottom: 10px;
+/* Glowing Title */
+.glow {
+    font-size: 38px;
+    color: #ff8fa3;
+    text-shadow: 0 0 10px #ff4d6d,
+                 0 0 20px #ff4d6d,
+                 0 0 40px #ff4d6d;
 }
 
-h2 {
-    font-weight: 300;
+#counter {
+    margin-top: 15px;
+    font-size: 18px;
     color: #ffb6b6;
 }
 
-img {
-    width: 300px;
-    max-width: 90%;
+/* Love Letter Card */
+.love-letter {
+    background: rgba(255,255,255,0.06);
+    padding: 30px;
     border-radius: 20px;
-    margin: 25px 0;
-    box-shadow: 0 0 30px rgba(255, 120, 120, 0.6);
+    margin-top: 30px;
+    line-height: 1.8;
+    box-shadow: 0 20px 60px rgba(255, 0, 80, 0.2);
 }
 
+/* Carousel */
+.carousel {
+    margin-top: 50px;
+    overflow: hidden;
+    border-radius: 20px;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(255, 0, 80, 0.3);
+}
+
+.carousel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    background: radial-gradient(circle at center, rgba(255,77,109,0.2), transparent 70%);
+    pointer-events: none;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.8s ease;
+}
+
+.slides img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    flex-shrink: 0;
+    animation: kenburns 8s ease-in-out infinite alternate;
+}
+
+/* Ken Burns */
+@keyframes kenburns {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.12); }
+}
+
+/* Buttons */
 button {
-    padding: 12px 28px;
+    padding: 14px 32px;
     font-size: 18px;
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    margin: 15px;
-    transition: 0.3s;
+    margin: 20px;
 }
 
 #yes {
     background: #ff4d6d;
     color: white;
+    transition: 0.3s;
 }
 
 #yes:hover {
@@ -55,57 +136,68 @@ button {
 }
 
 #no {
-    background: #555;
+    background: #444;
     color: white;
     position: absolute;
 }
 
-#message {
-    display: none;
-    font-size: 24px;
-    margin-top: 20px;
-    color: #ffdede;
-}
-
-.heart {
+/* Celebration */
+#celebration {
     position: fixed;
-    bottom: -10px;
-    font-size: 20px;
-    animation: float 5s linear infinite;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #ff4d6d, black);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1000;
+    text-align: center;
 }
 
-@keyframes float {
-    from {transform: translateY(0); opacity:1;}
-    to {transform: translateY(-100vh); opacity:0;}
+#celebration h1 {
+    font-size: 50px;
+    animation: pop 1s ease forwards;
 }
+
+@keyframes pop {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
 </style>
 </head>
 
 <body>
 
+<div class="stars" id="stars"></div>
+
 <div class="container">
 
-<h1>Dakshita ❤️</h1>
-<h2>Do you remember this night?</h2>
+<h1 class="glow">Our Story ❤️</h1>
+<div id="counter"></div>
 
-<img src="firstdate.jpg">
+<div class="love-letter">
+I didn’t know someone could quietly become such a big part of my world, but you did — through your smile, your little taunts, your soft heart, and the way you care without even trying.<br><br>
+Talking to you feels like home.<br><br>
+My effort. My loyalty. My heart — always yours. 💖
+</div>
 
-<p>
-This was our first date.  
-The nervous smiles.  
-The little laughs.  
-The moment I knew something felt different. ✨  
-</p>
+<div class="carousel">
+    <div class="slides" id="slides">
+        <img src="img1.jpg">
+        <img src="img2.jpg">
+        <img src="img3.jpg">
+        <img src="img4.jpg">
+        <img src="img5.jpg">
+        <img src="img6.jpg">
+    </div>
+</div>
 
-<h2>Will you be my Valentine? 💖</h2>
+<h2 style="margin-top:60px;">Will you be my Valentine? 💖</h2>
 
 <button id="yes" onclick="sayYes()">Yes 💕</button>
 <button id="no">No 🙈</button>
-
-<div id="message">
-You just made our story even more beautiful ❤️  
-I’d relive that first date a thousand times with you. 🥹✨
-</div>
 
 <audio id="bgMusic" loop>
   <source src="love.mp3" type="audio/mpeg">
@@ -113,31 +205,54 @@ I’d relive that first date a thousand times with you. 🥹✨
 
 </div>
 
-<script>
-const noBtn = document.getElementById("no");
+<div id="celebration">
+    <h1>💍 Officially My Valentine 💖</h1>
+</div>
 
+<script>
+
+/* Generate Stars */
+for (let i = 0; i < 120; i++) {
+    const star = document.createElement("span");
+    star.style.top = Math.random() * 100 + "%";
+    star.style.left = Math.random() * 100 + "%";
+    document.getElementById("stars").appendChild(star);
+}
+
+/* Day Counter Since Oct 10 2025 */
+const startDate = new Date("October 10, 2025 00:00:00").getTime();
+
+setInterval(function() {
+    const now = new Date().getTime();
+    const diff = now - startDate;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    document.getElementById("counter").innerHTML =
+        "It's been " + days + " days since we met ❤️";
+}, 1000);
+
+/* Carousel */
+let currentIndex = 0;
+const slides = document.getElementById("slides");
+const totalSlides = slides.children.length;
+
+setInterval(() => {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+}, 5000);
+
+/* No Button Movement */
+const noBtn = document.getElementById("no");
 noBtn.addEventListener("mouseover", function() {
     noBtn.style.left = Math.random() * window.innerWidth + "px";
     noBtn.style.top = Math.random() * window.innerHeight + "px";
 });
 
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * window.innerWidth + "px";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 5000);
-}
-
-setInterval(createHeart, 400);
-
+/* Yes Celebration */
 function sayYes() {
-    document.getElementById("message").style.display = "block";
     document.getElementById("bgMusic").play();
-    document.getElementById("yes").style.display = "none";
-    document.getElementById("no").style.display = "none";
+    document.getElementById("celebration").style.display = "flex";
 }
+
 </script>
 
 </body>
